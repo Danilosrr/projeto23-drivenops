@@ -1,5 +1,4 @@
 services:
-
   db:
     image: postgres
     container_name: db
@@ -26,15 +25,12 @@ services:
     build: ./front-end
     volumes:
       - build_react:/var/www/html
-    depends_on:
-      - db
-      - node_app
 
   nginx_app:
     container_name: nginx_app
     build: ./nginx
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - build_react:/var/www/html
     depends_on:
